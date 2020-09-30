@@ -3,10 +3,25 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {names} from './backend/GuildRosterInfo.js'
+import {onames} from './backend/GuildRosterInfo.js'
 
-const header = <h1>Test</h1>;
+export {names, onames};
 
-getData(response.data)
+//var index = require ('./template.html');
+//const header = <h1>Test</h1>;
+
+//getData(response.data)
+
+class Header extends React.Component {
+  render() {
+    return (
+	  <div>
+      <h1 style={{color: "cyan"}}> Lemme Run The Numbers</h1>
+	  </div>
+    );
+  }
+}
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

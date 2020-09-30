@@ -2,8 +2,8 @@ const battleNetWrapper = require('battlenet-api-wrapper');
   
 const clientId = 'e7c6bd0f1525486f8564162de9b528b3';  
 const clientSecret = 'V0Fd6R1lo477dROFXwBkNy49tYyHJdRo';  
-  
-(async function() {  
+
+module.exports = (async function() {  
    const bnw = new battleNetWrapper();  
    await bnw.init(clientId, clientSecret);
    const data = await bnw.WowProfileData.getGuildRoster('kelthuzad', 'lemme-run-the-numbers').then(function(result) {
@@ -12,8 +12,8 @@ const clientSecret = 'V0Fd6R1lo477dROFXwBkNy49tYyHJdRo';
 	   var names = obj.members.map(function (member) {
 		   return member.character.name;
 	   });
+	   module.exports = name;
 	   console.log(names);
-	   
 	   /*var nonofficernames = obj.members.map(function (member) {
 		   return member.character.name;
 	   });
@@ -52,20 +52,28 @@ const clientSecret = 'V0Fd6R1lo477dROFXwBkNy49tYyHJdRo';
 		 "Druid": "#FF7D0A",
 		 "Demon Hunter": "Strong Magenta"}
 	   console.log("Officers:");
+	   var onames = [];
 	   for(var i in guildmembers) {
 			var rank = obj.members[i].rank;
 			var name = obj.members[i].character.name;
 			var pclass = pclasses[Object.values(obj.members[i].character.playable_class)[1]];
 			var armory = armorylink.concat(name);
 			if(rank < 2) {
+				var s = "name: " + name + " - " + pclass;
 				console.log("name: " + name + " - " + pclass);
+				onames.push(s);
 				console.log("WoW armory link: " + armory);
 				//console.log('%cclass: ' + pclass, 'color:' + classcolors[pclass] + '');
 			}
 	   }
+	   console.log(onames);
+	   exports.onames = onames;
    });
 /* data.then(function(result) {
 	const json = JSON.parse(response);
    });*/
    
 }());
+
+
+
